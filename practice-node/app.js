@@ -1,3 +1,6 @@
+const os = require('os');
+
+
 //se puede importar usando require
 /* const saludar = require('./saludos.js') */
 // se puede importar unando desestructuracion de objs para llamar directamente el metodo
@@ -36,4 +39,28 @@ for (const i of process.argv) {
     console.log(i)
 } */
 
-console.log(process.memoryUsage());
+//console.log(process.memoryUsage());
+
+
+/* modulo OS podemos obtener info sobe el OS */
+
+console.log(os.type())
+
+console.log(os.homedir())
+
+console.log(os.uptime());
+
+console.log(os.userInfo())
+
+
+/* modulo timer ejecuta un codigo despues de un tiempo en concreto */
+
+/* setTimeout(function, retraso, args, args1, etc) */
+
+/* function mostrarTema(tema) {
+    console.log(`Estoy aprediendo ${tema}`)
+}
+mostrarTema('node') */
+/* setInterval
+
+setImmediate */
