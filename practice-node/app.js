@@ -1,5 +1,5 @@
 const os = require('os');
-
+const fs = require('fs')
 
 //se puede importar usando require
 /* const saludar = require('./saludos.js') */
@@ -44,13 +44,13 @@ for (const i of process.argv) {
 
 /* modulo OS podemos obtener info sobe el OS */
 
-console.log(os.type())
+/* console.log(os.type())
 
 console.log(os.homedir())
 
 console.log(os.uptime());
 
-console.log(os.userInfo())
+console.log(os.userInfo()) */
 
 
 /* modulo timer ejecuta un codigo despues de un tiempo en concreto */
@@ -64,3 +64,17 @@ mostrarTema('node') */
 /* setInterval
 
 setImmediate */
+
+
+
+/* modulo FS (file system) todos los metodos son asincronos por defecto
+si quieres modicar usan versiones sincronas agregando Sync como sufijo*/
+
+/* fs.rename o fs.renameSync */
+
+/* se puede leer, modificacr copiar eliminar cambiar nombre */
+
+fs.readFile('index.html', 'utf-8', (err, done) =>{
+	if(err) throw err;
+	console.log(done)
+});
