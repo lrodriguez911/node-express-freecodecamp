@@ -1,6 +1,6 @@
 function ordenarProducto(producto) {
     return new Promise((resolve, reject) => {
-        console.log(`Ordenando el ${producto}`);
+        console.log(`Ordenando : ${producto}`);
         setTimeout(() => {
             if (producto === 'taza') {
                 resolve('ordenando Producto')
@@ -12,11 +12,11 @@ function ordenarProducto(producto) {
 }
 
 function procesarPedido(respuesta) {
-    return new Promise((reso, reject) => {
+    return new Promise((resolve, reject) => {
         console.log('Procesando respuesta ...');
         console.log(`La respuesta fue "${respuesta}"`);
         setTimeout(() => {
-            reso('Gracias por su compra. Disfrute su producto')
+          resolve('Gracias por su compra. Disfrute su producto')
         }, 4000);
     })
 }
@@ -36,4 +36,14 @@ function procesarPedido(respuesta) {
 
 /* using async await */
 
-
+async function realizarPedido(producto) {
+  try {
+    const respuesta = await ordenarProducto(producto)
+    console.log('Respuesta recibida');
+    const respuestaProcesada = await procesarPedido(respuesta)
+    console.log(respuestaProcesada);
+  } catch (error) {
+    console.log(error);
+  }
+}
+realizarPedido('lapiz')
