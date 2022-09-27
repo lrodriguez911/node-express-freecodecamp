@@ -1,1 +1,12 @@
 POST http://127.0.0.1:3000/cursos/programacion
+Content-Type: application/json
+{
+    "titulo": "Aprende Jscript"
+}
+###
+
+GET http://127.0.0.1:3000/
+
+
+###
+PUT http://127.0.0.1:3000/
