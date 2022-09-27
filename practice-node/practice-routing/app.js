@@ -8,9 +8,7 @@ function manejarMethodGET(req, res) {
   if (path === "/") {
     res.writeHead(200, { "Content-type": "application/json" });
     //res.statusCode = 200;
-    return res.end(
-      JSON.stringify("Bienvenidos a mi server y API creado con NODE.JS"),
-    );
+    return res.end(JSON.stringify("Bienvenidos a mi server y API creado con NODE.JS"));
   } else if (path === "/cursos") {
     res.statusCode = 200;
     return res.end(JSON.stringify(cursos.infoCursos));
@@ -27,10 +25,27 @@ function manejarMethodGET(req, res) {
 }
 
 function manejarMethodPOST(req, res) {
+
   const path = req.url;
+ 
   if (path === "/cursos/programacion") {
     res.statusCode = 200;
-    return res.end(`El server recibio una solicitud POST en ${path}`);
+    let cuerpo = '';
+
+    req.on('data', content =>{
+      cuerpo += content.toString();
+    })
+  
+    req.on('end', () =>{
+      console.log(cuerpo);
+      console.log( typeof cuerpo);
+      cuerpo = JSON.parse(cuerpo);
+      console.log( typeof cuerpo);
+      console.log(cuerpo.titulo);
+
+      return res.end(`El server recibio una solicitud POST en ${path}`)
+    })
+    //return res.end(`El server recibio una solicitud POST en ${path}`);
   }
   res.statusCode = 404;
   res.end("No se pudo guardar la solicitud");
