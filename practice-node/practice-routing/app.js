@@ -8,7 +8,7 @@ function manejarMethodGET(req, res) {
   if (path === "/") {
     res.writeHead(200, { "Content-type": "application/json" });
     //res.statusCode = 200;
-    return res.end(JSON.stringify("Bienvenidos a mi server y API creado con NODE.JS"));
+    return res.end(JSON.stringify("Bienvenidos a mi server y API creado con NODE.JS y con nodemon"));
   } else if (path === "/cursos") {
     res.statusCode = 200;
     return res.end(JSON.stringify(cursos.infoCursos));
