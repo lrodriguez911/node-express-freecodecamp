@@ -17,6 +17,12 @@ let infoCursos = {
     lenguaje:'python',
     vistas:15000,
     nivel:'intermedio'
+    },
+    {id:4,
+    titulo:'Aprende Javascript Intermedio',
+    lenguaje:'javascript',
+    vistas:13000,
+    nivel:'intermedio'
     }
   ],
   matematicas:[

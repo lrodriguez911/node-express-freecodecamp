@@ -11,7 +11,12 @@ app.get('/api/cursos/programacion', (req, res)=>{res.send(JSON.stringify(infoCur
 
 app.get('/api/cursos/programacion/:lenguaje', (req, res) => {
   const {lenguaje} = req.params
-  res.send(`No hay cursos de ${lenguaje}`)
+  const result = infoCursos.programacion.filter(curso => curso.lenguaje === lenguaje)
+
+  if(result.length === 0 ){
+    return res.status(404).send(`No se encontraron cursos de ${lenguaje}.`)
+  }
+  res.send(JSON.stringify(result))
 })
 
 app.get('/api/cursos/matematicas', (req, res)=>{res.send(JSON.stringify(infoCursos.matematicas))})

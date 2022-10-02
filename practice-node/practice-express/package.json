@@ -4,7 +4,7 @@
   "description": "server created whit node.js and express",
   "main": "app.js",
   "scripts": {
-    "start": "app.js",
+    "start": "nodemon app.js",
     "test": "test"
   },
   "keywords": [
