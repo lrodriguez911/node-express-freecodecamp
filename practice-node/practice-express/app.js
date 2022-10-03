@@ -7,6 +7,7 @@ app.get('/', (req, res) => res.send('Hola a todos usando res.send saludos a todo
 
 app.get('/api/cursos', (req, res)=>{res.send(JSON.stringify(infoCursos))})
 
+//programacion
 app.get('/api/cursos/programacion', (req, res)=>{res.send(JSON.stringify(infoCursos.programacion))})
 
 app.get('/api/cursos/programacion/:lenguaje', (req, res) => {
@@ -19,7 +20,31 @@ app.get('/api/cursos/programacion/:lenguaje', (req, res) => {
   res.send(JSON.stringify(result))
 })
 
+app.get('/api/cursos/programacion/:lenguaje/:nivel',(req, res)=>{
+  const {lenguaje} = req.params;
+  const {nivel} = req.params;
+  const result = infoCursos.programacion.filter(curso => curso.lenguaje === lenguaje && curso.nivel === nivel )
+
+  if(result.length === 0){
+    return res.status(404).send(`No se encontraron cursos de ${lenguaje} con el nivel:${nivel}.`)
+  }
+  res.send(JSON.stringify(result))
+})
+
+
+//matematicas
 app.get('/api/cursos/matematicas', (req, res)=>{res.send(JSON.stringify(infoCursos.matematicas))})
+
+app.get('/api/cursos/matematicas/:tema', (req, res)=>{
+  const {tema} = req.params;
+  const result = infoCursos.matematicas.filter(element => curso.element === tema)
+
+  if(result.length === 0){
+    res.status(404).send(`No se encontraron cursos de ${tema}`)
+  }
+  res.send(JSON.stringify(result))
+})
+
 
 const PORT = process.env.PORT || 3000;
 
