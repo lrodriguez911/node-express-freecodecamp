@@ -7,6 +7,13 @@ app.get('/', (req, res) => res.send('Hola a todos usando res.send saludos a todo
 
 app.get('/api/cursos', (req, res)=>{res.send(JSON.stringify(infoCursos))})
 
+function ordenarVistas(aOrdenar, req, res) {
+  if(req.query.ordenar === 'vistas'){
+    return res.send(JSON.stringify(aOrdenar.sort((a,b) => a.vistas - b.vistas)))
+  }
+  return res.send(JSON.stringify(aOrdenar.sort((a,b) => b.vistas - a.vistas)))
+}
+
 //programacion
 app.get('/api/cursos/programacion', (req, res)=>{res.send(JSON.stringify(infoCursos.programacion))})
 
@@ -17,7 +24,9 @@ app.get('/api/cursos/programacion/:lenguaje', (req, res) => {
   if(result.length === 0 ){
     return res.status(404).send(`No se encontraron cursos de ${lenguaje}.`)
   }
-  res.send(JSON.stringify(result))
+  ordenarVistas(result, req, res)
+
+  /* res.send(JSON.stringify(result)) */
 })
 
 app.get('/api/cursos/programacion/:lenguaje/:nivel',(req, res)=>{

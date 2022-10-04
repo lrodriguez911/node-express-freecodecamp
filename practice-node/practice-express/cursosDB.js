@@ -3,7 +3,7 @@ let infoCursos = {
     {id:1,
     titulo:'Aprende Python',
     lenguaje:'python',
-    vistas:15000,
+    vistas:7000,
     nivel:'basico'
     },
     {id:2,
